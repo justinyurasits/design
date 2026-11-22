@@ -1,9 +1,11 @@
 ---
 type: spec
-status: draft
+status: current
 ---
 
 # JustinYurasits.com — Site Spec
 
-**Draft. Not written yet.** What the site must do, each requirement with acceptance
-criteria, tracing to the capabilities in the product spec once that exists.
+The site is the whole product, so the product spec is this component's spec:
+[../product-spec.md](../product-spec.md). Requirements, issues and tests cite its
+capability IDs (JYC-CAP-01 to 09) and product-wide requirements (§5). This file stays a
+pointer until the site has requirements of its own beyond the product spec.
