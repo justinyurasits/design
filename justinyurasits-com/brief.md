@@ -8,8 +8,8 @@ status: draft
 2026-11-22 · Justin
 
 **Draft.** Written from the website strategy brief (v0.2). The parts of that brief that
-are requirements, design or technology are held for the product spec and architecture
-docs, which aren't written yet.
+are requirements or visual design are held for the product spec and for `brand-system`.
+The proposed tech stack is in the site's design doc ([site/design.md](site/design.md)).
 
 A personal website that is the permanent home for Justin's writing, AI projects and
 consulting. It exists so that the right people, in enterprise AI and in construction,
@@ -33,23 +33,30 @@ Two audiences, equally important commercially.
 Each audience needs its own clear path to the writing, projects, experience and services
 that concern it.
 
-**Open:** who it is not for, and one named person per audience to test decisions against.
+**Who to test decisions against:**
+
+- **Enterprise:** the hiring manager for an agentic or AI product role, and the recruiter
+  or HR contact when Justin is placing himself as C2C.
+- **Construction:** the owner of a mid-size firm, or an executive at a larger one, such
+  as a COO or head of project management.
+
+**Not for:** anyone looking for a standalone Construction OS product site, a general AI
+news publication or a software-services agency. The site still serves Construction OS
+visitors; it just isn't that product's marketing site.
 
 ## 2. The painful moment
 
-**Open.** The source brief doesn't describe one. Two candidates to choose between or
-combine:
-
-- A buyer, in either audience, trying to judge whether Justin can actually build what
-  he describes, with nothing to look at but a résumé or a profile.
-- Justin, with an article written, and no simple way to publish it without editing page
-  layouts or code.
+An enterprise hiring manager or a C2C recruiter clicks Justin's LinkedIn link and lands
+on a construction software company with a "Book a demo" button. Nothing tells them he is
+an AI product leader who builds. A construction executive who has met Justin in person
+goes looking for his background and finds a product pitch instead of him. Either way,
+they can't evaluate his writing, his experience and his working systems in one place.
 
 ## 3. What it replaces
 
-**Open.** What a buyer looks at today instead (LinkedIn, a résumé, scattered
-repositories and demo links), and where Justin's writing lives today, and why each stops
-working.
+The current Construction OS site at justinyurasits.com. It becomes the one central place
+for Justin's writing (primary), his construction solutions, and his agentic and
+conversational AI demos.
 
 ## 4. Goals and how we'll know
 
@@ -58,7 +65,7 @@ working.
 | Enterprise AI buyers and construction leaders quickly understand Justin's expertise and how to engage him | Navigation to project and consulting pages | Baseline first |
 | Relevant visitors start consulting conversations | Relevant inquiries | Baseline first |
 | Original writing is easy to discover, read and share | Article engagement | Baseline first |
-| Technical projects give credible evidence of real capability | *Open: what gets counted* | Baseline first |
+| Technical projects give credible evidence of real capability | Click-through from a case study to its demo or repository, and from articles to the projects they cite | Baseline first |
 | New articles are published quickly and reliably, and publishing gets easier rather than adding administrative work | Publishing consistency | Baseline first |
 
 No traffic or lead-generation targets until a baseline exists. Every capability in the
@@ -72,7 +79,11 @@ as the flagship evidence, and a clear way to start a conversation, with publishi
 working from day one so the writing can keep coming. The launch list is held for the
 product spec.
 
-**Open:** why this comes first, stated as the painful moment it removes (§2).
+It comes first because it removes the painful moment. Today a hiring manager, a
+recruiter or a construction executive who follows Justin's link lands on a product
+pitch. After this release the same link shows who he is, what he has written and what
+he has built, in one place. Construction OS visitors still find the product, as a case
+study.
 
 ## 6. Out of scope, on purpose
 
