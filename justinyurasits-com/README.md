@@ -36,6 +36,10 @@ Nothing here is claimed as working until it is.
 With one component there's no architecture doc; the site's design doc covers how it
 works.
 
+The visual design is the personal sub-brand in
+[`brand-system`](https://github.com/justinyurasits/brand-system/tree/main/brands/personal)
+(BRAND-004), per the standard's visual-design exception.
+
 ## Components
 
 | Component | Folder | What it is |

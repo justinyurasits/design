@@ -11,12 +11,12 @@ status: draft
 are requirements or visual design are held for the product spec and for `brand-system`.
 The tech stack is in the site's design doc ([site/design.md](site/design.md)).
 
-A personal website that is the permanent home for Justin's writing, AI projects and
-consulting. It exists so that the right people, in enterprise AI and in construction,
+A personal website that is the permanent home for Justin's writing, AI projects,
+consulting and training. It exists so that the right people, in enterprise AI and in construction,
 can see what Justin knows, check that he has built it, and start a conversation about
 working together. Writing establishes intellectual credibility, projects demonstrate
 applied capability, and consulting turns that credibility into professional and
-commercial opportunities.
+commercial opportunities. Writing is the site's primary strategic purpose, wherever it sits in the navigation.
 
 ## 1. Customer
 
@@ -33,6 +33,9 @@ Two audiences, equally important commercially.
 Each audience needs its own clear path to the writing, projects, experience and services
 that concern it.
 
+**Training** starts with the construction audience: AI education for owners and leaders
+of construction firms. Enterprise training may follow.
+
 **Who to test decisions against:**
 
 - **Enterprise:** the hiring manager for an agentic or AI product role, and the recruiter
@@ -41,8 +44,12 @@ that concern it.
   as a COO or head of project management.
 
 **Not for:** anyone looking for a standalone Construction OS product site, a general AI
-news publication or a software-services agency. The site still serves Construction OS
-visitors; it just isn't that product's marketing site.
+news publication or a software-services agency. The site has a Solutions section, with
+Construction OS as its flagship, that explains how Justin applies AI. It stays Justin's
+professional site, not Construction OS's marketing site. It says which work is an
+existing build, which is a consulting service, and which is a possible custom
+engagement. Enterprise AI and construction AI carry equal commercial weight.
+Construction OS's own properties keep their own brand.
 
 ## 2. The painful moment
 
@@ -63,7 +70,7 @@ conversational AI demos.
 | Goal | Measured by | Target |
 | --- | --- | --- |
 | Enterprise AI buyers and construction leaders quickly understand Justin's expertise and how to engage him | Navigation to project and consulting pages | Baseline first |
-| Relevant visitors start consulting conversations | Relevant inquiries | Baseline first |
+| Relevant visitors start consulting conversations | Relevant inquiries (consulting and training) | Baseline first |
 | Original writing is easy to discover, read and share | Article engagement | Baseline first |
 | Technical projects give credible evidence of real capability | Click-through from a case study to its demo or repository, and from articles to the projects they cite | Baseline first |
 | New articles are published quickly and reliably, and publishing gets easier rather than adding administrative work | Publishing consistency | Baseline first |
@@ -75,8 +82,8 @@ now.
 ## 5. The wedge
 
 The first release gives each audience one substantive piece of writing, Construction OS
-as the flagship evidence, and a clear way to start a conversation, with publishing
-working from day one so the writing can keep coming. The launch list is held for the
+as the flagship evidence, an informational Training page, and a clear way to start a
+conversation, with publishing working from day one so the writing can keep coming. The launch list is held for the
 product spec.
 
 It comes first because it removes the painful moment. Today a hiring manager, a
@@ -91,5 +98,7 @@ study.
   the archive grows after.
 - **Advanced search.** Not needed until there's enough writing to search.
 - **Elaborate animation.** Restraint is the point; it would also slow the launch.
+- **Training registration, payment or course management.** Training is informational in
+  the first release; interest arrives by email.
 - **Moving Construction OS to its own domain.** It gets a case study here first, and its
   existing product and demo links keep working until the move.
