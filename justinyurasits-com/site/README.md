@@ -12,9 +12,13 @@ Product-level docs are one folder up, in [../](../).
 
 ## Where things stand
 
-Nothing built or validated yet. The design doc holds the decided tech stack (Astro,
-Markdown/MDX, GitHub Pages, GitHub Actions), the redirect approach, and three repository
-overrides. The plan is M0 to M2; the build log fills at each roll-up.
+M0 and M1 are built on the `v2` branch ([roll-up #35–#50](build-log.md)):
+- Every capability, JYC-CAP-01 to 09, has neutral styling and `[COPY]` slots.
+- The site checks and CI are in, and all 16 old addresses are preserved.
+- On `v2`: `npm run check` passes on 25 pages, and 85 tests pass.
+
+Not live yet: `main` is still the old site until the M2 cutover. Not built: the visual
+design, copy and launch articles (M2). One M0 item is open: the metric bases ([#13](https://github.com/justinyurasits/justinyurasits.github.io/issues/13)).
 
 **Code:** [`justinyurasits.github.io`](https://github.com/justinyurasits/justinyurasits.github.io),
 `v2` branch until cutover. Its CLAUDE.md points back to this folder.
@@ -26,7 +30,7 @@ overrides. The plan is M0 to M2; the build log fills at each roll-up.
 | [brief.md](brief.md) | A pointer to the product brief, which covers the site. |
 | [spec.md](spec.md) | A pointer to the product spec, which covers the site. |
 | [design.md](design.md) | How it works, its boundaries, and the decision log. Holds the tech stack and the repository overrides. Draft. |
-| [plan.md](plan.md) | M0, M1 and M2, each with its exit criterion and GitHub milestone. |
-| [build-log.md](build-log.md) | What happened, in order, and what each finding changed. Draft. |
+| [plan.md](plan.md) | What's left: M0.5 and M2, each with its exit criterion and GitHub milestone. |
+| [build-log.md](build-log.md) | What happened, in order, and what each finding changed. M0 and M1 so far. |
 
 All of these are written in this repo; none is synced from Claude Docs yet.
