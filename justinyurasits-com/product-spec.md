@@ -8,7 +8,7 @@ status: draft
 What the site must do for its visitors and its author, capability by capability, and how
 anyone can check that it does. Behavior a visitor or the author can observe, not
 implementation. The [brief](brief.md) says why. The site's [design doc](site/design.md)
-says how; its tech stack is proposed there, not approved. Visual rules come from
+says how, including its tech stack. Visual rules come from
 [`brand-system`](https://github.com/justinyurasits/brand-system).
 
 **Draft.** Two questions are open, in §6. The old-address mapping in JYC-CAP-09 is
@@ -172,11 +172,11 @@ technical afterthought.
 5. Preview it locally, exactly as it will appear.
 6. Mark it draft or published, and push it. The site publishes it with no further step.
 
-The source format and push-to-publish mechanism are proposed in
-[site/design.md](site/design.md#4-decision-log), not settled here.
+The source format and push-to-publish mechanism are decided in
+[site/design.md](site/design.md#4-decision-log), not here.
 
-Article-only changes (an article's content file and its images) may be pushed by Justin
-directly to `main`. Code changes follow issues and pull requests. This is recorded in
+After cutover, article-only changes (an article's content file and its images) may be
+pushed by Justin directly to `main`. Code changes follow issues and pull requests. This is recorded in
 [site/design.md](site/design.md#4-decision-log) as an override for section 7 of the
 site repository's `CLAUDE.md`.
 

@@ -12,11 +12,12 @@ Product-level docs are one folder up, in [../](../).
 
 ## Where things stand
 
-Nothing designed, built or validated yet. The design doc holds the proposed tech stack
-and the redirect approach, none of it approved, and one decision: article-only changes
-go straight to `main`. Every other doc is a draft.
+Nothing built or validated yet. The design doc holds the decided tech stack (Astro,
+Markdown/MDX, GitHub Pages, GitHub Actions) and three repository overrides; the redirect
+approach is still proposed. Every other doc is a draft.
 
-**Code:** none yet.
+**Code:** [`justinyurasits.github.io`](https://github.com/justinyurasits/justinyurasits.github.io),
+`v2` branch until cutover. Its CLAUDE.md points back to this folder.
 
 ## The docs
 
@@ -24,7 +25,7 @@ go straight to `main`. Every other doc is a draft.
 | --- | --- |
 | [brief.md](brief.md) | Where this component narrows the product brief. Draft. |
 | [spec.md](spec.md) | What it must do: requirements, each with acceptance criteria. Draft. |
-| [design.md](design.md) | How it works, its boundaries, and the decision log. Holds the proposed tech stack. Draft. |
+| [design.md](design.md) | How it works, its boundaries, and the decision log. Holds the tech stack and the repository overrides. Draft. |
 | [plan.md](plan.md) | Milestones still ahead, each with its exit criterion. Draft. |
 | [build-log.md](build-log.md) | What happened, in order, and what each finding changed. Draft. |
 

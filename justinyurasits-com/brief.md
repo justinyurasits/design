@@ -9,7 +9,7 @@ status: draft
 
 **Draft.** Written from the website strategy brief (v0.2). The parts of that brief that
 are requirements or visual design are held for the product spec and for `brand-system`.
-The proposed tech stack is in the site's design doc ([site/design.md](site/design.md)).
+The tech stack is in the site's design doc ([site/design.md](site/design.md)).
 
 A personal website that is the permanent home for Justin's writing, AI projects and
 consulting. It exists so that the right people, in enterprise AI and in construction,
