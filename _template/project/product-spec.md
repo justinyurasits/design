@@ -8,8 +8,8 @@ status: draft
 *What the product must do for its users, capability by capability, and how anyone can
 check that it does. Behavior the user can observe, not implementation. The brief says
 why; architecture.md says how the parts deliver each capability; each component's
-spec.md says what that part must do. Optional by type; needed once a project has two
-or more components.*
+spec.md says what that part must do. Optional by type; needed once a project's
+components make up one product.*
 
 ## 1. Product scope
 

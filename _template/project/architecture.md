@@ -5,7 +5,7 @@ status: draft
 
 # Project name — Architecture
 
-*Optional; needed once there are two or more components. How the parts fit together.
+*Optional; needed once a product has more than one component. How the parts fit together.
 Each component's design.md holds its own internals and decisions; this doc holds what
 crosses component boundaries.*
 
