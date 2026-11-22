@@ -13,8 +13,9 @@ This folder holds the product-level docs. Each component has its own folder.
 
 ## Where things stand
 
-Brief and product spec in draft. The site's design doc holds the proposed tech stack, none of it
-approved. Nothing is designed, built or validated yet.
+Brief and product spec in draft. The tech stack is decided, in the site's design doc.
+Nothing is built or validated yet; v2 is being built on the `v2` branch of
+[`justinyurasits.github.io`](https://github.com/justinyurasits/justinyurasits.github.io).
 
 | | Designed | Built | Validated |
 | --- | --- | --- | --- |
@@ -40,7 +41,9 @@ works.
 
 ## Repositories
 
-None yet.
+| Repository | What it holds |
+| --- | --- |
+| [`justinyurasits.github.io`](https://github.com/justinyurasits/justinyurasits.github.io) | The site's code and content. Public. `main` is the live Construction OS site until the v2 cutover; v2 is built on the `v2` branch. |
 
 ## How these docs work
 

@@ -1,10 +1,10 @@
 ---
 type: brief
-status: draft
+status: current
 ---
 
 # JustinYurasits.com — Site Brief
 
-**Draft. Not written yet.** The site is the whole product today, so the product brief
-([../brief.md](../brief.md)) covers it. This file will hold only what narrows or adds to
-that brief.
+The site is the whole product, so the product brief is this component's brief:
+[../brief.md](../brief.md). This file stays a pointer until the site has a customer,
+painful moment or scope of its own that narrows the product brief.
