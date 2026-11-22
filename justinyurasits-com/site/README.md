@@ -13,8 +13,8 @@ Product-level docs are one folder up, in [../](../).
 ## Where things stand
 
 Nothing built or validated yet. The design doc holds the decided tech stack (Astro,
-Markdown/MDX, GitHub Pages, GitHub Actions) and three repository overrides; the redirect
-approach is still proposed. The plan is M0 to M2; the build log fills at each roll-up.
+Markdown/MDX, GitHub Pages, GitHub Actions), the redirect approach, and three repository
+overrides. The plan is M0 to M2; the build log fills at each roll-up.
 
 **Code:** [`justinyurasits.github.io`](https://github.com/justinyurasits/justinyurasits.github.io),
 `v2` branch until cutover. Its CLAUDE.md points back to this folder.
