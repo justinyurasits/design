@@ -12,8 +12,9 @@ Product-level docs are one folder up, in [../](../).
 
 ## Where things stand
 
-Nothing designed, built or validated yet. The design doc holds the proposed tech stack,
-none of it approved. Every other doc is a draft.
+Nothing designed, built or validated yet. The design doc holds the proposed tech stack
+and the redirect approach, none of it approved, and one decision: article-only changes
+go straight to `main`. Every other doc is a draft.
 
 **Code:** none yet.
 

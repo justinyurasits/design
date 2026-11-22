@@ -11,7 +11,7 @@ implementation. The [brief](brief.md) says why. The site's [design doc](site/des
 says how; its tech stack is proposed there, not approved. Visual rules come from
 [`brand-system`](https://github.com/justinyurasits/brand-system).
 
-**Draft.** One question is open, in §6. The old-address mapping in JYC-CAP-09 is
+**Draft.** Two questions are open, in §6. The old-address mapping in JYC-CAP-09 is
 approved with this spec.
 
 ## 1. Product scope
@@ -20,7 +20,7 @@ One site that carries Justin's writing (primary), his project case studies, and 
 consulting pathways: enterprise AI and construction AI. It replaces the current
 Construction OS site at justinyurasits.com and keeps that site's links working. It stops
 where the brief's [out-of-scope list](brief.md#6-out-of-scope-on-purpose) starts. No page
-shows a price.
+shows Justin's fees or service pricing.
 
 **The first release** includes:
 - the homepage, with clear professional positioning
@@ -32,6 +32,8 @@ shows a price.
 - About and Contact
 - mobile-responsive layouts and basic SEO
 - automatic publishing
+- **a publishing demonstration:** one real article with images, code, references and a
+  related project, published using the documented routine (JYC-CAP-04)
 
 That is JYC-CAP-01 to JYC-CAP-09, with the product-wide requirements in §5.
 
@@ -46,13 +48,13 @@ new writing either way.
 
 | Old address | Title | Category | After re-editing |
 | --- | --- | --- | --- |
-| `/tribal-knowledge.html` | What Walks Out the Door When Your Best Person Leaves | AI for Construction | Could meet the construction article requirement. It's the closest to the construction pathway's COO hook. |
+| `/tribal-knowledge.html` | What Walks Out the Door When Your Best Person Leaves | AI for Construction | Could meet the construction article requirement. It's the closest to the construction pathway's starting copy, the retiring-COO opening. |
 | `/eighty-ninety-problem.html` | The Work Around the Work: Why Construction Operations Stay So Manual | AI for Construction | Could meet the construction article requirement. |
 | `/ai-projects-fail.html` | AI Can't Automate a Business It Doesn't Understand | AI for Construction | Could meet the construction article requirement. Its argument applies to enterprise readers too, but it's written for construction businesses. |
 
 Each passes the facts check before it is published. None contains a banned string
-today. Two state figures ("20 years", "10 days") that the check will trace to the
-register.
+today. Two state figures ("20 years", "10 days"). Each is either a claim about Justin or
+his products, traced to the register, or supported in the article itself (§5).
 
 ## 2. Users and their goals
 
@@ -173,9 +175,19 @@ technical afterthought.
 The source format and push-to-publish mechanism are proposed in
 [site/design.md](site/design.md#4-decision-log), not settled here.
 
+Article-only changes (an article's content file and its images) may be pushed by Justin
+directly to `main`. Code changes follow issues and pull requests. This is recorded in
+[site/design.md](site/design.md#4-decision-log) as an override for section 7 of the
+site repository's `CLAUDE.md`.
+
 **Acceptance criteria**
 - Given the site is configured, when Justin publishes a standard text article, then he
   edits one content file and pushes it, and changes no site component.
+- Given Justin publishing any article, then he follows a documented short routine. There
+  is one command to create a new article, one command to preview it, and a validation
+  result in plain language. No Astro knowledge is needed at any step.
+- Given an article-only change, then Justin can push it directly to `main`. Given any
+  change to code, then it goes through an issue and a pull request.
 - Given an article marked draft, then it can be previewed locally and appears nowhere on
   the live site: not in listings, the feed or the sitemap, and not at its own URL.
 - Given an article missing a required field, then the build fails and names the field.
@@ -198,7 +210,8 @@ applications, agents, test harnesses, technical experiments and other significan
 Every case study uses the same format and can include:
 
 - the business or technical problem
-- Justin's role and ownership: **built** or **led** (§5)
+- Justin's role and ownership: **built**, **led** or **both**, and what he personally
+  did (§5)
 - the solution architecture and approach
 - important design decisions and tradeoffs
 - implemented functionality
@@ -207,12 +220,18 @@ Every case study uses the same format and can include:
 - screenshots, demonstrations, repositories and related writing
 
 **Acceptance criteria**
-- Given any case study, then it shows built or led, its maturity, and its demo
-  availability. The build fails if any of the three is missing.
+- Given any case study, then it shows built, led or both, what Justin personally did,
+  its maturity, and its demo availability. The build fails if any of them is missing.
 - Given a case study with a public demo or a public repository, then each link works.
-- Given a project with no public repository, then the case study shows screenshots and
-  a short walkthrough, labeled "Private repository, walkthrough on request." It shows
-  no dead or placeholder link.
+- Given a project with no public repository, then the case study shows at least one of:
+  screenshots, a walkthrough, or a sanitized architecture explanation. It shows no dead
+  or placeholder link.
+- Given one of Justin's own projects in a private repository, then it's labeled
+  "Private repository, walkthrough on request." The label is used only for Justin's own
+  repositories.
+- Given confidential work for an employer or client, then the case study shows no
+  client-identifying detail: no names, documents, data or screenshots that identify the
+  client.
 - Given an article cites the project, then the case study links back to it.
 - Screenshots are of the real system, never generic AI imagery.
 
@@ -222,32 +241,33 @@ Every case study uses the same format and can include:
 
 ### JYC-CAP-06: Work With Me
 
-One pathway page per audience. Each explains the business problems an engagement
-addresses, not just a list of technical capabilities, and each ends in a clear next
-action. No page shows a price.
+One pathway page per audience. Each opens with a named business problem, states the
+outcomes an engagement delivers rather than just a list of technical capabilities, and
+ends with a next step. Neither shows Justin's fees or service pricing.
+
+Starting copy for both openings is held in the site's code repository, not here
+([justinyurasits.github.io#5](https://github.com/justinyurasits/justinyurasits.github.io/issues/5)).
 
 - **Enterprise AI Consulting & Leadership:** contract or C2C, fractional AI product
   leadership, advisory, product strategy, solution design, modernization and
   implementation leadership.
-  - It opens with: *"You have an AI strategy and no one who can both run the product
-    and build the system."*
   - It states the engagement types and *"remote, based in Boston"*, and links to a
     downloadable résumé PDF.
   - It shows no rates or availability dates.
 - **Construction AI Consulting:** education, opportunity assessment, business workflow
   design, advisory, custom implementation and Construction OS-related services.
-  - It opens with: *"Your 64-year-old COO is about to retire and half your business
-    runs in his head."*
 
 **Acceptance criteria**
-- Given either pathway page, then its first line is its opening above, word for word.
-- Given a visitor on either pathway page, then they reach the contact options without
-  leaving it.
+- Given either pathway page, then it opens with a named business problem its audience
+  has.
+- Given either pathway page, then it states the outcomes of an engagement.
+- Given either pathway page, then it ends with a next step that reaches the contact
+  options without leaving the page.
 - Given the enterprise pathway page, then the résumé PDF downloads from it, and the page
   shows no rates or availability dates.
-- Given any duration, figure or service status on either page, then it traces to the
+- Given any claim about Justin or his products on either page, then it traces to the
   facts register (§5).
-- Given any page, then it shows no price or fee (§5).
+- Given either pathway page, then it shows none of Justin's fees or service pricing (§5).
 
 **Brief goals:** Inquire, Understand
 
@@ -259,8 +279,9 @@ Justin's professional history, enterprise leadership experience, construction op
 background, credentials, approach and selected achievements.
 
 **Acceptance criteria**
-- Given any experience entry or achievement, then it shows whether Justin built it
-  himself or led the team that delivered it. The build fails if it's missing (§5).
+- Given any experience entry or achievement, then it shows whether Justin built it, led
+  the team that delivered it, or both, with one line on what he personally did. The
+  build fails if either is missing (§5).
 - Given any credential, employer, figure or date, then it traces to the facts register
   (§5).
 
@@ -317,9 +338,14 @@ its own domain. Whether Construction OS keeps its own visual identity here is fo
 | `/products/custom-solutions.html` | Product page | The construction pathway page |
 
 **Acceptance criteria**
-- Given any address in the table, when a visitor opens it, then they land on the page in
-  its "Goes to" column, never an error page. An automated check fails the build if any
-  address doesn't resolve.
+- Given any address in the table that moves, then it serves a redirect page (a meta
+  refresh plus a canonical link) to its "Goes to" destination, never an error page.
+  GitHub Pages can't issue 301 redirects. The limitation is logged in
+  [site/design.md](site/design.md#4-decision-log).
+- Given the preserved-links check, then it follows each address to its final
+  destination. It fails the build if the destination doesn't resolve, or if the anchor
+  target the address points at (such as the Document Workbench section of the
+  Construction OS landing page) doesn't exist there.
 - Given the Construction OS landing page, then it links to each live product and demo.
   Each link works and shows its maturity and demo availability (§5).
 
@@ -335,16 +361,18 @@ its own domain. Whether Construction OS keeps its own visual identity here is fo
    product leader and hands-on builder, not "Book a demo" (JYC-CAP-01).
 2. Follows the enterprise pathway page, or the featured enterprise article
    (JYC-CAP-06, JYC-CAP-03).
-3. The article cites a project, and they open its case study. It shows built or led,
-   maturity and demo availability (JYC-CAP-05).
+3. The article cites a project, and they open its case study. It shows built, led or
+   both, what Justin personally did, maturity and demo availability (JYC-CAP-05).
 4. Opens About and reads which systems Justin built himself and which his teams
    delivered under his leadership (JYC-CAP-07).
 5. Uses the contact link for a contract engagement from the header (JYC-CAP-08).
 
-**When it goes wrong:** the case study is for a project with no public repository. It
-shows screenshots and a short walkthrough, labeled "Private repository, walkthrough on
-request." It has no dead link. The hiring manager can still judge the work, and can ask
-for the walkthrough through Contact.
+**When it goes wrong:** the case study is for a project with no public repository. If
+it's Justin's own project, it shows screenshots, a walkthrough or a sanitized
+architecture explanation, labeled "Private repository, walkthrough on request." If it's
+confidential work for an employer, it shows the same kinds of evidence with no
+client-identifying detail. Neither has a dead link. The hiring manager can still judge
+the work, and can ask for more through Contact.
 
 ### The recruiter or HR contact for a C2C placement
 
@@ -366,14 +394,15 @@ about.
    from an email or a bookmark (JYC-CAP-09).
 2. Lands on the Construction OS landing page at Document Workbench, with its products
    and demos.
-3. Opens the construction pathway page. It opens with the COO hook (JYC-CAP-06).
+3. Opens the construction pathway page. It opens with a business problem they
+   recognize (JYC-CAP-06).
 4. Reads an AI for Construction article or case study (JYC-CAP-02, JYC-CAP-05).
 5. Reads the construction background and credentials on About (JYC-CAP-07).
 6. Books a call through the booking link, or emails through the education link
    (JYC-CAP-08).
 
 **When it goes wrong:** the old link was `/insights.html`, a page that's now only a
-redirect. It takes them to the writing library, never an error page. Every old address
+redirect. Its redirect page takes them to the writing library, never an error page. Every old address
 is in the JYC-CAP-09 table, and the build fails if one stops resolving.
 
 ### Justin, as author, publishing an article
@@ -400,12 +429,12 @@ is in the JYC-CAP-09 table, and the build fails if one stops resolving.
 
 | Requirement | What must hold | How it's checked |
 | --- | --- | --- |
-| **Facts register** | Every factual claim on the site traces to one canonical facts register: every figure, credential, employer, status and duration. A page never states a fact differently from the register, and never uses a string the register bans. The current site's register (`content/facts.json` in the website repository) and its check (`tools/verify.js`) are carried forward and extended to articles and case studies. Two changes:<br>• The first-person rule is dropped. First person is allowed site-wide.<br>• Price facts are no longer used on any page.<br>When a page and the register disagree, the page is fixed. The register changes only when the fact itself changes. | An automated check fails the build when a page drifts from the register or uses a banned string, as `verify.js` does today. |
-| **Canonical figures** | `content/facts.json` is the one register, and `content/metrics.json` is folded into it. The values:<br>• **Preliminary estimating:** "~10 hrs → ~2 hrs", as the register has it<br>• **Project manager knowledge:** months → day one (new in the register, from `metrics.json`)<br>• **Contract package:** keeps the register's current "up to 8 hrs → ~30 min"<br>• **Change order:** keeps the register's current "~10 days → ~3 days" | The register check. |
-| **No prices** | No page shows a price or fee. The register's pricing values are kept out of page-facing use. | The check fails the build if a fee from the register, or a price in a fee pattern such as "from $" or a "$N–M" range, appears on a page. |
-| **Built vs. led** | Every project and every experience entry shows whether Justin built it himself or led the team that delivered it. Nothing implies he personally built something a team delivered. | A required field in the content schema. The build fails without it. |
+| **Facts register** | The register governs claims about Justin and his products only: credentials, employers, roles, product status and product metrics. Wherever such a claim appears, it never differs from the register, and no page uses a string the register bans.<br>Other figures inside an article are supported in the article itself, with a citation, the method, or a label saying they're illustrative. They don't go in the register.<br>Every metric entry has a required `basis`: how and where it was measured, for example "measured across ~20 real jobs and bids".<br>The current site's register (`content/facts.json` in the website repository) and its check (`tools/verify.js`) are carried forward. Two changes:<br>• The first-person rule is dropped. First person is allowed site-wide.<br>• Justin's fee and service-pricing facts are kept out of page-facing use.<br>When a page and the register disagree, the page is fixed. The register changes only when the fact itself changes. | An automated check fails the build when a claim about Justin or his products drifts from the register, when a page uses a banned string, or when a metric entry has no `basis`. Figures in articles that aren't about Justin or his products aren't checked against the register. |
+| **Canonical figures** | `content/facts.json` is the one register, and `content/metrics.json` is folded into it. The values:<br>• **Preliminary estimating:** "~10 hrs → ~2 hrs", as the register has it<br>• **Project manager knowledge:** months → day one (new in the register, from `metrics.json`)<br>• **Contract package:** keeps the register's current "up to 8 hrs → ~30 min"<br>• **Change order:** keeps the register's current "~10 days → ~3 days"<br>Each gets its `basis` when the register is updated. | The register check. |
+| **No fees** | No page shows Justin's fees or service pricing. Other monetary figures in articles and case studies are allowed. | The check fails the build if one of the register's fee values appears on any page. |
+| **Built vs. led** | Every project and every experience entry has two fields:<br>• **role:** `built`, `led` or `both`<br>• **what I personally did:** one line<br>Nothing implies Justin personally built something a team delivered. | Both are required fields in the content schema. The build fails without either. |
 | **Maturity and demo** | Every project shows two fields:<br>• **maturity:** `live`, `beta`, `prototype`, `experiment` or `in-development`<br>• **demo:** `public`, `on-request` or `none`<br>Values come from the register, mapped as in the table below. | Required fields in the content schema; the build fails without them. The register check catches drift, as `verify.js` checks status drift today. |
-| **Preserved links** | Every address in the JYC-CAP-09 table resolves. | An automated check fails the build if any doesn't. |
+| **Preserved links** | Every address in the JYC-CAP-09 table reaches its destination, through a redirect page where it moves. Every anchor target it points at exists. | An automated check follows each address to its final destination, and fails the build if the destination or the anchor target is missing. |
 | **Responsive** | Every page works on mobile and desktop. | Checked at 375px and 1280px wide. |
 | **Accessible** | Navigation and reading are accessible. | WCAG 2.2 AA. |
 | **Fast** | Pages load fast. | Lighthouse scores of 90 or more for performance and for accessibility. |
@@ -436,3 +465,6 @@ middle dots) belong to `brand-system`, not to this spec.
   value for each, from Career Facts v5. Until they're in, About, the homepage
   introduction and the enterprise pathway page can't pass the facts check. Tracked in
   [justinyurasits.github.io#4](https://github.com/justinyurasits/justinyurasits.github.io/issues/4).
+- **Reconcile workflow statuses with what currently works.** The register's workflow
+  statuses, and the maturity and demo values mapped from them in §5, need checking
+  against what runs today. Justin decides.
