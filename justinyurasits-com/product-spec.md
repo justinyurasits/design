@@ -11,8 +11,8 @@ implementation. The [brief](brief.md) says why. The site's [design doc](site/des
 says how; its tech stack is proposed there, not approved. Visual rules come from
 [`brand-system`](https://github.com/justinyurasits/brand-system).
 
-**Draft.** One question is open, in §6. The old-address mapping in JYC-CAP-09 is a
-proposal, approved when this spec is approved.
+**Draft.** One question is open, in §6. The old-address mapping in JYC-CAP-09 is
+approved with this spec.
 
 ## 1. Product scope
 
@@ -39,16 +39,20 @@ That is JYC-CAP-01 to JYC-CAP-09, with the product-wide requirements in §5.
 They were published there, then withdrawn on 2026-09-19 and replaced with redirects to
 `/`. Their text is still in the website repository's history (commit `416e8ba`).
 
-| Old address | Title | Category | Counts toward launch? |
+They migrate as **drafts to re-edit, not launch-ready**. None counts toward the launch
+requirements as it stands. Once re-edited and published, any of them could meet the
+construction article requirement. None would meet the enterprise one, so that article is
+new writing either way.
+
+| Old address | Title | Category | After re-editing |
 | --- | --- | --- | --- |
 | `/tribal-knowledge.html` | What Walks Out the Door When Your Best Person Leaves | AI for Construction | Could meet the construction article requirement. It's the closest to the construction pathway's COO hook. |
 | `/eighty-ninety-problem.html` | The Work Around the Work: Why Construction Operations Stay So Manual | AI for Construction | Could meet the construction article requirement. |
 | `/ai-projects-fail.html` | AI Can't Automate a Business It Doesn't Understand | AI for Construction | Could meet the construction article requirement. Its argument applies to enterprise readers too, but it's written for construction businesses. |
 
-None of the three meets the enterprise article requirement, so that article is new
-writing. Each migrated article passes the facts check before it is published again. None
-contains a banned string today. Two state figures ("20 years", "10 days") that the check
-will trace to the register.
+Each passes the facts check before it is published. None contains a banned string
+today. Two state figures ("20 years", "10 days") that the check will trace to the
+register.
 
 ## 2. Users and their goals
 
@@ -291,7 +295,7 @@ working, and so do the existing product and demo links, until Construction OS mo
 its own domain. Whether Construction OS keeps its own visual identity here is for
 `brand-system`.
 
-**Proposed old-address mapping.** Approved with this spec.
+**Old-address mapping.**
 
 | Current address | What it holds today | Goes to |
 | --- | --- | --- |
@@ -303,9 +307,9 @@ its own domain. Whether Construction OS keeps its own visual identity here is fo
 | `/about.html` | About | About (JYC-CAP-07) |
 | `/privacy.html` | Privacy policy | Kept at the same address |
 | `/terms.html` | Terms | Kept at the same address |
-| `/tribal-knowledge.html` | Redirect to `/` (was an article) | The migrated article (§1) |
-| `/eighty-ninety-problem.html` | Redirect to `/` (was an article) | The migrated article |
-| `/ai-projects-fail.html` | Redirect to `/` (was an article) | The migrated article |
+| `/tribal-knowledge.html` | Redirect to `/` (was an article) | The migrated article once it's re-edited and published (§1); the writing library until then |
+| `/eighty-ninety-problem.html` | Redirect to `/` (was an article) | The same |
+| `/ai-projects-fail.html` | Redirect to `/` (was an article) | The same |
 | `/products/document-workbench.html` | Product page | The Construction OS landing page, at Document Workbench |
 | `/products/construction-intelligence.html` | Product page | The Construction OS landing page, at Construction Intelligence |
 | `/products/operations-automation.html` | Product page | The Construction OS landing page, at Operations Automation |
@@ -397,7 +401,7 @@ is in the JYC-CAP-09 table, and the build fails if one stops resolving.
 | Requirement | What must hold | How it's checked |
 | --- | --- | --- |
 | **Facts register** | Every factual claim on the site traces to one canonical facts register: every figure, credential, employer, status and duration. A page never states a fact differently from the register, and never uses a string the register bans. The current site's register (`content/facts.json` in the website repository) and its check (`tools/verify.js`) are carried forward and extended to articles and case studies. Two changes:<br>• The first-person rule is dropped. First person is allowed site-wide.<br>• Price facts are no longer used on any page.<br>When a page and the register disagree, the page is fixed. The register changes only when the fact itself changes. | An automated check fails the build when a page drifts from the register or uses a banned string, as `verify.js` does today. |
-| **Canonical figures** | `content/facts.json` is the one register, and `content/metrics.json` is folded into it. The values:<br>• **Preliminary estimating:** 10 hours → 2 hours<br>• **Project manager knowledge:** months → day one (new in the register, from `metrics.json`)<br>• **Contract package:** keeps the register's current "up to 8 hrs → ~30 min"<br>• **Change order:** keeps the register's current "~10 days → ~3 days" | The register check. |
+| **Canonical figures** | `content/facts.json` is the one register, and `content/metrics.json` is folded into it. The values:<br>• **Preliminary estimating:** "~10 hrs → ~2 hrs", as the register has it<br>• **Project manager knowledge:** months → day one (new in the register, from `metrics.json`)<br>• **Contract package:** keeps the register's current "up to 8 hrs → ~30 min"<br>• **Change order:** keeps the register's current "~10 days → ~3 days" | The register check. |
 | **No prices** | No page shows a price or fee. The register's pricing values are kept out of page-facing use. | The check fails the build if a fee from the register, or a price in a fee pattern such as "from $" or a "$N–M" range, appears on a page. |
 | **Built vs. led** | Every project and every experience entry shows whether Justin built it himself or led the team that delivered it. Nothing implies he personally built something a team delivered. | A required field in the content schema. The build fails without it. |
 | **Maturity and demo** | Every project shows two fields:<br>• **maturity:** `live`, `beta`, `prototype`, `experiment` or `in-development`<br>• **demo:** `public`, `on-request` or `none`<br>Values come from the register, mapped as in the table below. | Required fields in the content schema; the build fails without them. The register check catches drift, as `verify.js` checks status drift today. |
