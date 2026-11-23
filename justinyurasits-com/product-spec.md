@@ -12,7 +12,7 @@ says how, including its tech stack. Visual rules come from the personal sub-bran
 [`brand-system`](https://github.com/justinyurasits/brand-system), `brands/personal/`
 (BRAND-004).
 
-**Draft.** One question is open, in §6. The old-address mapping in JYC-CAP-09 is
+**Draft.** No questions are open (§6). The old-address mapping in JYC-CAP-09 is
 approved with this spec.
 
 ## 1. Product scope
@@ -575,7 +575,5 @@ middle dots) belong to the Construction OS brand and don't apply to this site.
 
 ## 6. Open product questions
 
-- **Reconcile workflow statuses with what currently works.** The register's workflow
-  statuses, and the maturity and demo values mapped from them in §5, need checking
-  against what runs today. Justin decides. This includes the verified statuses of
-  Construction OS's four products (JYC-CAP-09).
+None. The last two, the enterprise facts and the workflow statuses, were answered on
+2026-11-23 (Career Facts v5.7 and v5.8).
