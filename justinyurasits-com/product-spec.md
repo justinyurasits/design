@@ -139,13 +139,15 @@ research and implementation lessons. It is browsable by category and by tag.
   a category.
 - Category filters narrow the full listing in place. Without JavaScript, every article
   shows.
-- Listings are built automatically: all articles, each category, each tag, plus
-  featured and recent sections. Also an RSS feed and a sitemap.
+- Listings are built automatically: all articles, newest first, each category, each tag,
+  plus a featured section. Also an RSS feed and a sitemap. A recent section shows only
+  when it would show an article the rest of the library doesn't already show; while the
+  full listing shows every article, it stays hidden.
 
 **Acceptance criteria**
 - Given a newly published article, when the site builds, then it appears in the full
-  listing, its category's page, each of its tags' pages, the recent section, the RSS
-  feed and the sitemap, with no listing edited by hand.
+  listing, newest first, its category's page, each of its tags' pages, the RSS feed and
+  the sitemap, with no listing edited by hand.
 - Given an article with no primary category, or more than one, then the build fails and
   names the field. Nothing publishes.
 - Given the featured article is unpublished or set back to draft, then the writing
