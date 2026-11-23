@@ -12,7 +12,7 @@ says how, including its tech stack. Visual rules come from the personal sub-bran
 [`brand-system`](https://github.com/justinyurasits/brand-system), `brands/personal/`
 (BRAND-004).
 
-**Draft.** Three questions are open, in §6. The old-address mapping in JYC-CAP-09 is
+**Draft.** Two questions are open, in §6. The old-address mapping in JYC-CAP-09 is
 approved with this spec.
 
 ## 1. Product scope
@@ -556,6 +556,12 @@ Change Order Drafting is live at draftconstructionchangeorder.com, so its "Publi
 maps to `live`. A plain "Beta" says nothing about a demo, so it maps to `none` until the
 register says otherwise.
 
+Construction OS's role is **built**, and the register holds its `personallyDid`, which
+Justin confirmed on 2026-11-22: "Conceived and architected Construction OS and built its
+major components (the corpus, the Document Workbench and the intake router), drawing on my
+own construction document library. Ava Yurasits contributed to the build." No page calls
+him its "sole designer and builder" or otherwise implies he built it alone.
+
 Visual rules come from brand-system's personal sub-brand (BRAND-004), not from this spec.
 The old `verify.js` visual rules (raw hex colors, type tokens, uppercase, arrows and
 middle dots) belong to the Construction OS brand and don't apply to this site.
@@ -571,7 +577,3 @@ middle dots) belong to the Construction OS brand and don't apply to this site.
   statuses, and the maturity and demo values mapped from them in §5, need checking
   against what runs today. Justin decides. This includes the verified statuses of
   Construction OS's four products (JYC-CAP-09).
-- **Construction OS role.** What Justin personally did on Construction OS (its `role` and
-  `personallyDid`) is pending his confirmation. Its case study can't publish until then,
-  and no page describes the role, such as "sole designer and builder", before it's
-  confirmed.

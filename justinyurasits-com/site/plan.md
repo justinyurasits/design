@@ -48,7 +48,6 @@ follow the revised product spec (JYC-CAP-01 to 10).
      - [#4](https://github.com/justinyurasits/justinyurasits.github.io/issues/4) enterprise facts
      - [#28](https://github.com/justinyurasits/justinyurasits.github.io/issues/28) statuses
      - [#29](https://github.com/justinyurasits/justinyurasits.github.io/issues/29) the résumé
-     - the Construction OS role
      - the Training details
      - M2.18 final imagery
      - [#30](https://github.com/justinyurasits/justinyurasits.github.io/issues/30) case studies
@@ -65,8 +64,6 @@ follow the revised product spec (JYC-CAP-01 to 10).
 
 ## Open questions blocking the plan
 
-- Construction OS role: what Justin personally did, pending his confirmation. Blocks the
-  Construction OS case study. Justin.
 - Enterprise facts, from Career Facts v5 ([#4](https://github.com/justinyurasits/justinyurasits.github.io/issues/4)). Blocks M2. Justin.
 - Reconcile workflow statuses with what currently works ([#28](https://github.com/justinyurasits/justinyurasits.github.io/issues/28)). Blocks
   M2. Justin.
