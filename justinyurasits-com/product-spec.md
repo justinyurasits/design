@@ -544,20 +544,23 @@ is in the JYC-CAP-09 table, and the build fails if one stops resolving.
 | **Fast** | Pages load fast. | Lighthouse scores of 90 or more for performance and for accessibility. |
 | **Discoverable** | Every published page has SEO metadata and a social preview, and is in the sitemap. Articles are in the RSS feed. | Checked by the build. |
 
-**Mapping the register's current status values**
+**Mapping the register's status values** (confirmed by Justin in Career Facts v5.8, 2026-11-23)
 
 | Register value | Used by | maturity | demo |
 | --- | --- | --- | --- |
-| "Public demo" | Change Order Drafting | `live` | `public` |
-| "Live, demo on request" | Invoice Intake, Site Safety, Field Reports | `live` | `on-request` |
+| "Public demo" | Change Order Drafting, Site Safety (Fieldscope) | `live` | `public` |
+| "Live, demo on request" | Invoice Intake | `live` | `on-request` |
 | "Beta, demonstrable" | Document Workbench, Construction Intelligence | `beta` | `on-request` |
-| "Beta" | Bid Comparison, Pay App Preparation, Subcontractor Compliance, Client Selections | `beta` | `none` |
+| "Beta" | Field Reports, Bid Comparison, Pay App Preparation, Subcontractor Compliance, Client Selections | `beta` | `none` |
 | "In development" | Project Intelligence | `in-development` | `none` |
-| "One public demo, three live, four beta" | Operations Automation | No single value. The product shows each of its workflows' values, above. | — |
+| "Two public demos, three live, five beta" | Operations Automation | No single value. The product shows each of its workflows' values, above. | — |
 | (none) | Construction OS | No single value. It shows its four products' values, and Operations Automation's workflows'. | — |
 
 Change Order Drafting is live at draftconstructionchangeorder.com, so its "Public demo"
-maps to `live`. A plain "Beta" says nothing about a demo, so it maps to `none` until the
+maps to `live`. Site Safety (Fieldscope) is live at fieldscope-vm64.onrender.com. Wherever
+its link appears, the page says the first load can take up to a minute while the server
+wakes. Construction Intelligence is the original version: nothing implies it runs on the
+new retrieval architecture. A plain "Beta" says nothing about a demo, so it maps to `none` until the
 register says otherwise.
 
 Construction OS's role is **built**, and the register holds its `personallyDid`, which
