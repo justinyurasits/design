@@ -70,10 +70,8 @@ at its project and component folder and says what to read first. Design leads, c
 follows: a change to what the product does is made here (or in its Claude Doc) first,
 and the code pull request cites it.
 
-**4. Work runs through GitHub.** The issue is the plan. Each pull request records the
-small decisions made while coding and what the work taught. Every so often, Claude Code
-asks to roll those up into the component's design log and build log, and checks whether
-any Claude Doc has moved ahead of its synced copy. Nothing enters the record without
+**4. Work runs through GitHub.** Issues, pull requests and roll-ups, described step by
+step in [How work flows](#how-work-flows) below. Nothing enters the record without
 Justin's approval.
 
 **5. The structure is checked.** `python tools/validate.py` runs on every pull request
@@ -85,8 +83,13 @@ The rules behind all of this are in [STANDARD.md](STANDARD.md). Where this page 
 
 ### The everyday loop
 
-Most work never touches the design docs until the end. You pick an issue, Claude Code
-builds it from the design, you merge, and every few PRs the lessons roll up.
+Most implementation work follows a design that's already approved. Claude Code works
+from a GitHub issue, implements and tests the change, and opens a pull request.
+Important decisions and findings come back into the design through reviewed roll-ups.
+
+`plan.md` and issues do different jobs. A component's `plan.md` holds the milestones
+ahead, each with an exit criterion. A GitHub issue authorizes one bounded task within a
+milestone (or a bug or small fix), which is what "the issue is the plan" means.
 
 ```mermaid
 sequenceDiagram
@@ -96,8 +99,8 @@ sequenceDiagram
     participant D as design docs
 
     J->>GH: 1. Open or pick an issue
-    CR->>D: 2. Read CLAUDE.md, then the design
-    CR->>GH: Read the issue
+    CR->>GH: 2. Read the issue
+    CR->>D: Read CLAUDE.md, then the design it points to
     CR->>CR: Branch, code, tests, checks
     CR->>GH: 3. Pull request: decisions + build notes
     J->>CR: Review and merge (closes the issue)
@@ -107,7 +110,7 @@ sequenceDiagram
 | Step | Who | What changes |
 | --- | --- | --- |
 | **1. Issue** | You, or Claude from the plan | A GitHub issue in the code repo: what to build, which design section it follows, and the acceptance criteria. The issue is the plan. |
-| **2. Build** | Claude Code | Code and tests on a branch `issue-<N>-…`. Claude Code reads its `CLAUDE.md`, then the design in order (brief, spec, design, plan), then the issue. Nothing in `design` changes. |
+| **2. Build** | Claude Code | Code and tests on a branch `issue-<N>-…`. Claude Code reads the issue first, then its `CLAUDE.md` and the design the issue depends on, in order (brief, spec, design, plan). Nothing in `design` changes. |
 | **3. Review** | Claude Code opens it, you merge | The PR records **Decisions (proposed)**, the implementation choices made while coding, and **Build notes**, what happened and what it taught. The checks run. Merging approves the decisions and closes the issue. |
 | **4. Roll up** | Claude Code proposes, you approve | After a merge, a finished milestone or about every ten turns. Decisions go to the component's `design.md` log, findings to its `build-log.md`, and any lesson that generalizes to the project's `principles.md`. A finished milestone leaves `plan.md`. Synced docs get these as suggestions in the Claude Doc, then a sync PR; repo-authored docs get a PR in `design`. |
 
@@ -132,6 +135,9 @@ project also gets a row in the table above; a new code repo fills in section 7 o
 `CLAUDE.md`.
 
 ### How often each design file changes
+
+Typical, not a rule.
+
 
 | File | Changes | When |
 | --- | --- | --- |
@@ -158,11 +164,4 @@ project also gets a row in the table above; a new code repo fills in section 7 o
 
 ## Adding something
 
-- **A project:** copy `_template/project/`, rename it, fill it in, and add a row to the
-  table above.
-- **A component:** copy `_template/component/` into the project and list it in the
-  project README.
-- **A code repository:** copy `_template/repo/` into it and fill in section 7 of its
-  `CLAUDE.md`.
-
-Every change is a branch and a pull request. Never commit to main.
+See *Something new* under [Other paths](#other-paths). Every change is a branch and a pull request. Never commit to main.
