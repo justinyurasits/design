@@ -81,54 +81,67 @@ and fails if a project or component is missing a file or a sync record is wrong.
 
 The rules behind all of this are in [STANDARD.md](STANDARD.md). Where this page and the standard differ, the standard is right.
 
-## A change, start to finish
+## How work flows
 
-Here is one change all the way through: you decide the product should do something new.
-Small work that fits the existing design (a bug, a refactor) starts at step 3.
+### The everyday loop
+
+Most work never touches the design docs until the end. You pick an issue, Claude Code
+builds it from the design, you merge, and every few PRs the lessons roll up.
 
 ```mermaid
 sequenceDiagram
     actor J as Justin
-    participant CD as Claude Doc
-    participant D as design repo
     participant GH as GitHub issue
     participant CR as code repo (Claude Code)
+    participant D as design docs
 
-    J->>CD: 1. Write the change (spec, design or product spec)
-    CD->>D: 2. Sync PR: doc + manifest + DOCS.md
-    J->>D: Review and merge
-    J->>GH: 3. Open the issue, citing the design
-    CR->>D: 4. Read CLAUDE.md, then the design docs
+    J->>GH: 1. Open or pick an issue
+    CR->>D: 2. Read CLAUDE.md, then the design
     CR->>GH: Read the issue
     CR->>CR: Branch, code, tests, checks
-    Note over CR,D: Design gap? Stop, propose it, back to step 1
-    CR->>GH: 5. Pull request: decisions + build notes
+    CR->>GH: 3. Pull request: decisions + build notes
     J->>CR: Review and merge (closes the issue)
-    CR->>CD: 6. Roll-up: decisions, findings, lessons (as suggestions)
-    J->>CD: Accept what's right
-    CD->>D: Sync PR, as in step 2
+    CR->>D: 4. Every few PRs: roll-up (you approve)
 ```
 
-| Step | Who | Where | What changes |
-| --- | --- | --- | --- |
-| **1. Decide** | You, with Claude in chat | The Claude Doc | The component's `spec` (what it must do) or `design` (how), or the project's `product-spec`. Its revision goes up. Nothing in any repo changes yet. |
-| **2. Sync** | Claude | A PR in `design` | The doc's file in its folder, the folder's `sync-manifest.yaml` (new revision), `DOCS.md` (rebuilt by `tools/build_docs.py`). The validator runs; you merge. If the change adds work, `plan.md` gets a milestone the same way. |
-| **3. Plan the work** | You, or Claude from the plan | A GitHub issue in the code repo | Nothing in `design`. The issue says what to build, cites the design section it follows, and lists the acceptance criteria. The issue is the plan. |
-| **4. Build** | Claude Code | A branch `issue-<N>-…` in the code repo | Code and tests. Claude Code reads its `CLAUDE.md`, then the design in order (brief, spec, design, plan), then the issue. If the design is silent or wrong, it stops and proposes the change: back to step 1. It never edits design docs in a code PR. |
-| **5. Review** | Claude Code opens it, you merge | The PR | The PR records **Decisions (proposed)**, the implementation choices made while coding, and **Build notes**, what happened and what it taught. The checks run. Merging approves the decisions and closes the issue. |
-| **6. Roll up** | Claude Code proposes, you approve | Back in the Claude Docs (or a `design` PR) | The component's `design.md` decision log gets the decisions; its `build-log.md` gets the findings; the project's `principles.md` gets any lesson that generalizes. A finished milestone leaves `plan.md`. For synced docs these arrive as suggestions in the Claude Doc, then sync as in step 2; for repo-authored docs, as a PR in `design`. The roll-up also flags any Claude Doc that has moved ahead of its synced copy. |
+| Step | Who | What changes |
+| --- | --- | --- |
+| **1. Issue** | You, or Claude from the plan | A GitHub issue in the code repo: what to build, which design section it follows, and the acceptance criteria. The issue is the plan. |
+| **2. Build** | Claude Code | Code and tests on a branch `issue-<N>-…`. Claude Code reads its `CLAUDE.md`, then the design in order (brief, spec, design, plan), then the issue. Nothing in `design` changes. |
+| **3. Review** | Claude Code opens it, you merge | The PR records **Decisions (proposed)**, the implementation choices made while coding, and **Build notes**, what happened and what it taught. The checks run. Merging approves the decisions and closes the issue. |
+| **4. Roll up** | Claude Code proposes, you approve | After a merge, a finished milestone or about every ten turns. Decisions go to the component's `design.md` log, findings to its `build-log.md`, and any lesson that generalizes to the project's `principles.md`. A finished milestone leaves `plan.md`. Synced docs get these as suggestions in the Claude Doc, then a sync PR; repo-authored docs get a PR in `design`. |
 
-**When each design file changes**
+### Other paths
 
-| File | Changes when |
-| --- | --- |
-| `spec.md`, `product-spec.md` | You decide what the product must do differently (step 1) |
-| `design.md` | You change how it works (step 1), or a roll-up adds decisions (step 6) |
-| `plan.md` | Work is added (step 2) or a milestone finishes (step 6) |
-| `build-log.md` | Every roll-up (step 6) |
-| `principles.md` | A roll-up finds a lesson that generalizes (step 6) |
-| `brief.md` | Rarely: who it's for or why changes |
-| `sync-manifest.yaml`, `DOCS.md` | Every sync |
+**The product should do something different.** Start one step earlier. Write the change
+in the Claude Doc (the component's `spec` for what it must do, its `design` for how, or
+the project's `product-spec`), sync it into `design` by PR, add a milestone to `plan.md`
+if it adds work, then open the issue. From there it's the everyday loop.
+
+**The design is silent or wrong mid-build.** Claude Code stops and says what's missing.
+You decide, the change goes into the Claude Doc (or a `design` PR) and is merged, and
+then the build continues against it. A design change never rides inside a code PR.
+
+**A Claude Doc moved ahead of its synced copy.** Someone edited the doc and nobody
+synced. The roll-up's drift check compares each manifest's revision with the doc's and
+offers a sync PR. Until then, the Claude Doc is the current version.
+
+**Something new: a project, a component or a code repo.** Copy the matching folder from
+`_template/` (`project/`, `component/` or `repo/`), fill it in, and open a PR. A new
+project also gets a row in the table above; a new code repo fills in section 7 of its
+`CLAUDE.md`.
+
+### How often each design file changes
+
+| File | Changes | When |
+| --- | --- | --- |
+| `build-log.md` | Often | Every roll-up |
+| `plan.md` | Each milestone | A milestone is added or finished |
+| `design.md` | Sometimes | A roll-up brings a decision, or you change how it works |
+| `principles.md` | Occasionally | A roll-up finds a lesson that applies beyond one piece of work |
+| `spec.md`, `product-spec.md` | Rarely | You change what the product must do |
+| `brief.md` | Almost never | Who it's for or why changes |
+| `sync-manifest.yaml`, `DOCS.md` | With every sync | Written by the sync, never by hand |
 
 ## The files at the top
 
