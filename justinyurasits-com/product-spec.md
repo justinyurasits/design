@@ -12,7 +12,7 @@ says how, including its tech stack. Visual rules come from the personal sub-bran
 [`brand-system`](https://github.com/justinyurasits/brand-system), `brands/personal/`
 (BRAND-004).
 
-**Draft.** Two questions are open, in §6. The old-address mapping in JYC-CAP-09 is
+**Draft.** No questions are open (§6). The old-address mapping in JYC-CAP-09 is
 approved with this spec.
 
 ## 1. Product scope
@@ -62,7 +62,11 @@ new writing either way.
 
 Each passes the facts check before it is published. None contains a banned string
 today. Two state figures ("20 years", "10 days"). Each is either a claim about Justin or
-his products, traced to the register, or supported in the article itself (§5).
+his products, traced to the register, or supported in the article itself (§5). The "10
+days" is the retired change-order figure: `/eighty-ninety-problem.html` and
+`/ai-projects-fail.html` both state it, and it's re-edited out before either is
+published. `/ai-projects-fail.html` also states estimating as "half a day to about one
+hour", which the register doesn't support.
 
 ## 2. Users and their goals
 
@@ -135,13 +139,15 @@ research and implementation lessons. It is browsable by category and by tag.
   a category.
 - Category filters narrow the full listing in place. Without JavaScript, every article
   shows.
-- Listings are built automatically: all articles, each category, each tag, plus
-  featured and recent sections. Also an RSS feed and a sitemap.
+- Listings are built automatically: all articles, newest first, each category, each tag,
+  plus a featured section. Also an RSS feed and a sitemap. A recent section shows only
+  when it would show an article the rest of the library doesn't already show; while the
+  full listing shows every article, it stays hidden.
 
 **Acceptance criteria**
 - Given a newly published article, when the site builds, then it appears in the full
-  listing, its category's page, each of its tags' pages, the recent section, the RSS
-  feed and the sitemap, with no listing edited by hand.
+  listing, newest first, its category's page, each of its tags' pages, the RSS feed and
+  the sitemap, with no listing edited by hand.
 - Given an article with no primary category, or more than one, then the build fails and
   names the field. Nothing publishes.
 - Given the featured article is unpublished or set back to draft, then the writing
@@ -529,8 +535,8 @@ is in the JYC-CAP-09 table, and the build fails if one stops resolving.
 
 | Requirement | What must hold | How it's checked |
 | --- | --- | --- |
-| **Facts register** | The register governs claims about Justin and his products only: credentials, employers, roles, product status and product metrics. Wherever such a claim appears, it never differs from the register, and no page uses a string the register bans.<br>Other figures inside an article are supported in the article itself, with a citation, the method, or a label saying they're illustrative. They don't go in the register.<br>Every metric entry has a required `basis`: how and where it was measured, for example "measured across ~20 real jobs and bids".<br>The current site's register (`content/facts.json` in the website repository) and its check (`tools/verify.js`) are carried forward. Two changes:<br>• The first-person rule is dropped. First person is allowed site-wide.<br>• Justin's fee and service-pricing facts are kept out of page-facing use.<br>When a page and the register disagree, the page is fixed. The register changes only when the fact itself changes. | An automated check fails the build when a claim about Justin or his products drifts from the register, when a page uses a banned string, or when a metric entry has no `basis`. Figures in articles that aren't about Justin or his products aren't checked against the register. |
-| **Canonical figures** | `content/facts.json` is the one register, and `content/metrics.json` is folded into it. The values:<br>• **Preliminary estimating:** "~10 hrs → ~2 hrs", as the register has it<br>• **Project manager knowledge:** months → day one (new in the register, from `metrics.json`)<br>• **Contract package:** keeps the register's current "up to 8 hrs → ~30 min"<br>• **Change order:** keeps the register's current "~10 days → ~3 days"<br>Each gets its `basis` when the register is updated. | The register check. |
+| **Facts register** | The register governs claims about Justin and his products only: credentials, employers, roles, product status and product metrics. Wherever such a claim appears, it never differs from the register, and no page uses a string the register bans.<br>A banned string applies site-wide unless the register scopes it to certain pages. "Wellen" and "Beacon Hill" are allowed on About and the résumé, and banned on the Construction OS page (`/solutions/construction-os/`) and the Construction OS case studies. "4–8 hrs" and "10 days → 3 days" are banned site-wide.<br>The experience entries, credentials and location come from Career Facts v5.7 (approved 2026-11-23), its default 12-year window.<br>Other figures inside an article are supported in the article itself, with a citation, the method, or a label saying they're illustrative. They don't go in the register.<br>Every metric entry has a required `basis`: how and where it was measured, for example "measured across ~20 real jobs and bids".<br>The current site's register (`content/facts.json` in the website repository) and its check (`tools/verify.js`) are carried forward. Two changes:<br>• The first-person rule is dropped. First person is allowed site-wide.<br>• Justin's fee and service-pricing facts are kept out of page-facing use.<br>When a page and the register disagree, the page is fixed. The register changes only when the fact itself changes. | An automated check fails the build when a claim about Justin or his products drifts from the register, when a page uses a banned string, or when a metric entry has no `basis`. Figures in articles that aren't about Justin or his products aren't checked against the register. |
+| **Canonical figures** | `content/facts.json` is the one register, and `content/metrics.json` is folded into it. The metrics, as Justin confirmed them on 2026-11-23:<br>• **Contract package:** "up to 8 hrs → ~30 min to a package ready for PM review". Basis: "My own time assembling contract packages by hand on real jobs, compared with generating a review-ready package with Document Workbench on about 10 jobs, 2024–2026."<br>• **Change order package:** "~4 hrs → ~1 hr of PM time". It replaces "~10 days → ~3 days". Basis: "My own PM time preparing change order packages by hand, compared with the system, on 10–15 jobs."<br>• **Preliminary estimating:** "~10 hrs → ~2 hrs". Basis: "My own time producing preliminary estimates by hand, compared with the system, on 10–15 jobs."<br>Project manager knowledge isn't a metric. It's a Construction OS capability: "A new PM can ask the system for company policy and instructions from day one." | The register check, including the basis check. |
 | **No fees** | No page shows Justin's fees or service pricing. Tuition for Justin's training counts as his fees. Other monetary figures in articles and case studies are allowed, and a third-party price on Training is checked against its source before it's published. | The check fails the build if one of the register's fee values appears on any page. |
 | **Built vs. led** | Every project and every experience entry has two fields:<br>• **role:** `built`, `led` or `both`<br>• **what I personally did:** one line<br>Nothing implies Justin personally built something a team delivered. | Both are required fields in the content schema. The build fails without either. |
 | **Maturity and demo** | Every project and product shows two fields:<br>• **maturity:** `live`, `beta`, `prototype`, `experiment` or `in-development`<br>• **demo:** `public`, `on-request` or `none`<br>Values come from the register, mapped as in the table below. There's no "Active Build" value. Construction OS has no status of its own: it shows its products' and workflows' values. | Required fields in the content schema; the build fails without them. The register check catches drift, as `verify.js` checks status drift today. |
@@ -540,27 +546,30 @@ is in the JYC-CAP-09 table, and the build fails if one stops resolving.
 | **Fast** | Pages load fast. | Lighthouse scores of 90 or more for performance and for accessibility. |
 | **Discoverable** | Every published page has SEO metadata and a social preview, and is in the sitemap. Articles are in the RSS feed. | Checked by the build. |
 
-**Mapping the register's current status values**
+**Mapping the register's status values** (confirmed by Justin in Career Facts v5.8, 2026-11-23)
 
 | Register value | Used by | maturity | demo |
 | --- | --- | --- | --- |
-| "Public demo" | Change Order Drafting | `live` | `public` |
-| "Live, demo on request" | Invoice Intake, Site Safety, Field Reports | `live` | `on-request` |
+| "Public demo" | Change Order Drafting, Site Safety (Fieldscope) | `live` | `public` |
+| "Live, demo on request" | Invoice Intake | `live` | `on-request` |
 | "Beta, demonstrable" | Document Workbench, Construction Intelligence | `beta` | `on-request` |
-| "Beta" | Bid Comparison, Pay App Preparation, Subcontractor Compliance, Client Selections | `beta` | `none` |
+| "Beta" | Field Reports, Bid Comparison, Pay App Preparation, Subcontractor Compliance, Client Selections | `beta` | `none` |
 | "In development" | Project Intelligence | `in-development` | `none` |
-| "One public demo, three live, four beta" | Operations Automation | No single value. The product shows each of its workflows' values, above. | — |
+| "Two public demos, three live, five beta" | Operations Automation | No single value. The product shows each of its workflows' values, above. | — |
 | (none) | Construction OS | No single value. It shows its four products' values, and Operations Automation's workflows'. | — |
 
 Change Order Drafting is live at draftconstructionchangeorder.com, so its "Public demo"
-maps to `live`. A plain "Beta" says nothing about a demo, so it maps to `none` until the
+maps to `live`. Site Safety (Fieldscope) is live at fieldscope-vm64.onrender.com. Wherever
+its link appears, the page says the first load can take up to a minute while the server
+wakes. Construction Intelligence is the original version: nothing implies it runs on the
+new retrieval architecture. A plain "Beta" says nothing about a demo, so it maps to `none` until the
 register says otherwise.
 
 Construction OS's role is **built**, and the register holds its `personallyDid`, which
-Justin confirmed on 2026-11-22: "Conceived and architected Construction OS and built its
+Justin confirmed on 2026-11-23: "Conceived and architected Construction OS and built its
 major components (the corpus, the Document Workbench and the intake router), drawing on my
-own construction document library. Ava Yurasits contributed to the build." No page calls
-him its "sole designer and builder" or otherwise implies he built it alone.
+own construction document library." No page calls him its "sole designer and builder" or
+otherwise implies he built it alone.
 
 Visual rules come from brand-system's personal sub-brand (BRAND-004), not from this spec.
 The old `verify.js` visual rules (raw hex colors, type tokens, uppercase, arrows and
@@ -568,12 +577,5 @@ middle dots) belong to the Construction OS brand and don't apply to this site.
 
 ## 6. Open product questions
 
-- **Enterprise facts.** The register holds only Construction OS facts today. Justin will
-  supply the enterprise employers, roles, achievements and credentials, and the built/led
-  value for each, from Career Facts v5. Until they're in, About, the homepage and the
-  enterprise track can't pass the facts check. Tracked in
-  [justinyurasits.github.io#4](https://github.com/justinyurasits/justinyurasits.github.io/issues/4).
-- **Reconcile workflow statuses with what currently works.** The register's workflow
-  statuses, and the maturity and demo values mapped from them in §5, need checking
-  against what runs today. Justin decides. This includes the verified statuses of
-  Construction OS's four products (JYC-CAP-09).
+None. The last two, the enterprise facts and the workflow statuses, were answered on
+2026-11-23 (Career Facts v5.7 and v5.8).
